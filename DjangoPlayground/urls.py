@@ -4,10 +4,12 @@ from DjangoTest import views
 
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
-urlpatterns = patterns('',url(r'^DjangoTest/', include('DjangoTest.urls')),
+urlpatterns = patterns('',
+                       url(r'^DjangoTest/', include('DjangoTest.urls')),
+                       url(r'^admin/', include(admin.site.urls)),
     # Examples:
     # url(r'^$', 'DjangoPlayground.views.home', name='home'),
     # url(r'^DjangoPlayground/', include('DjangoPlayground.foo.urls')),
