@@ -110,6 +110,8 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 ROOT_URLCONF = 'DjangoPlayground.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -131,6 +133,7 @@ INSTALLED_APPS = (
     'DjangoTest',
 )
 
+LOGIN_URL = '/DjangoTest/login/'
 
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
