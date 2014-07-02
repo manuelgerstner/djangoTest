@@ -9,15 +9,26 @@
 
     {% if pages %}
     <ul>
-        {% for page in pages %}
-        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-        {% endfor %}
+    {% for page in pages %}
+        <li>
+        <a href="/DjangoTest/goto/?page_id={{page.id}}">{{page.title}}</a>
+        {% if page.views > 1 %}
+            - ({{ page.views }} views)
+        {% elif page.views == 1 %}
+            - ({{ page.views }} view)
+        {% endif %}
+    </li>
+    {% endfor %}
     </ul>
     {% else %}
         <strong>No pages currently in category.</strong>
     {% endif %}
+    <div id="like-count">Likes: {{ category.likes }} </div><br>
+    {% if user.is_authenticated %}
+        <button id ="likes" data-catid="{{category.id}}" class="btn btn-warning" type="button">Like</button>
+    {% endif %}
 
     {% if user.is_authenticated %}
-       <a href="/DjangoTest/category/{{category_name_url}}/add_page/">Add a Page</a>
+       <a href="/DjangoTest/category/{{category_name_url}}/add_page/"><button class="btn btn-info">Add page</button></a>
     {% endif %}
 {% endblock %}

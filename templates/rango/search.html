@@ -3,7 +3,7 @@
     <br/>
 
     <div class="container-fluid">
-        <form class="form-signin span8" id="user_form" method="post" action="/DjangoTest/category/{{ category_name }}/">
+        <form class="form-signin span12" id="user_form" method="post" action="/DjangoTest/category/{{ category_name }}/">
             {% csrf_token %}
             <!-- Display the search form elements here -->
             <input type="text" size="50" name="query" value="" id="query" />
@@ -13,15 +13,18 @@
 
         {% if result_list %}
         <!-- Display search results in an ordered list -->
-        <div style="clear: both;">
+        <div class="span12">
             <ol>
-            {% for result in result_list %}
+                {% for result in result_list %}
                 <li>
                     <strong><a href="{{ result.link }}">{{ result.title }}</a></strong><br />
-                    <em>{{ result.summary }}</em>
+                    <p>{{ result.summary }}</p>
                 </li>
-            {% endfor %}
+                {% endfor %}
             </ol>
         </div>
-        {% endif %}
+    {% else %}
+        <br/>
+        <p>No results found</p>
+    {% endif %}
     </div>
